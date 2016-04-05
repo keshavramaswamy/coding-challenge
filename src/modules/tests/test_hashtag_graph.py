@@ -46,7 +46,7 @@ class TestHashtagGraph(object):
         """
         self.init_graph_data()
         self.graph.graph = self.mock_data.updated_graph
-        return self.graph.get_average() == 2.00
+        assert self.graph.get_average() == 1.50
 
     def test_empty_graph_get_average(self):
         """
@@ -54,7 +54,7 @@ class TestHashtagGraph(object):
         """
         self.init_graph_data()
         self.graph.graph = self.mock_data.empty_graph
-        return self.graph.get_average() == 0.00
+        assert self.graph.get_average() == 0.00
 
     def test_evict_edges_outside_window_no_edges_outside_window(self):
         """
@@ -64,7 +64,7 @@ class TestHashtagGraph(object):
         self.graph.graph = self.mock_data.initial_graph
         self.graph.update_timestamp_edges_map(self.mock_data.new_list_edges, self.mock_data.new_timestamp)
         self.graph.evict_edges_outside_window(self.mock_data.new_timestamp)
-        return self.graph.graph.number_of_edges() == self.mock_data.initial_graph.number_of_edges()
+        assert self.graph.graph.number_of_edges() == self.mock_data.initial_graph.number_of_edges()
 
     def test_evict_edges_outside_window_new_timestamp_outside_window(self):
         """
@@ -75,7 +75,7 @@ class TestHashtagGraph(object):
         self.graph.graph = self.mock_data.initial_graph
         self.graph.update_timestamp_edges_map(self.mock_data.new_list_edges, self.mock_data.outside_window_timestamp)
         self.graph.evict_edges_outside_window(self.mock_data.outside_window_timestamp)
-        return self.graph.graph.number_of_edges() == self.mock_data.initial_graph.number_of_edges()
+        assert self.graph.graph.number_of_edges() == self.mock_data.initial_graph.number_of_edges()
 
     def test_evict_edges_outside_window_first_timestamp_outside_window(self):
         """
@@ -86,4 +86,4 @@ class TestHashtagGraph(object):
         self.graph.graph = self.mock_data.initial_graph
         self.graph.update_timestamp_edges_map(self.mock_data.new_list_edges, self.mock_data.new_timestamp_maximum)
         self.graph.evict_edges_outside_window(self.mock_data.new_timestamp_maximum)
-        return self.graph.graph.number_of_edges() == self.mock_data.initial_graph.number_of_edges()
+        assert self.graph.graph.number_of_edges() == self.mock_data.initial_graph.number_of_edges()
