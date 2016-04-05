@@ -41,7 +41,7 @@ not installed.
 
 ## Tests:
 * The unit tests can be executed either by executing `tests/run_tests.sh` from `src/modules/` 
-or running `pytest ./tests/` from `src/modules/`from the terminal directly.
+or running `py.test ./tests/` from `src/modules/`from the terminal directly.
 * The library `pytest` is required for unit testing. Use `pip install pytest` for installing manually else execute
 run_tests.sh which automatically installs the library if not present.
 * Additional test suites are added in `/insight_testsuite/tests/`. They can be tested by executing 
